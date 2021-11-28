@@ -32,13 +32,13 @@ app.use(express.static(__dirname + '/public'));
 //Manejo de rutas:
 app.get('/', (req,res)=>{
     //Si ya existe una sessión redireccionelo al main, de lo contrario permitale el acceso:
-    if(req.session && req.session.id) res.redirect('main');
+    if(req.session && req.session._id) res.redirect('main');
     else res.render('login', {lang: 'es'});
 });
 
 app.get('/main', (req,res)=>{
     //Si existen sessiones dejelo ingresar, de lo contrario, redireccione al login:
-    if(req.session && req.session.id) res.render('main', {lang: 'es'});
+    if(req.session && req.session._id) res.render('main', {lang: 'es'});
     else res.redirect('/');
 });
 

@@ -11,7 +11,6 @@ const User = require('../model/user');
 
 //Cuando el usuario desee logearse:
 router.post('/login', async(req, res) => {
-    console.log(req.body);
     //Valores traidos:
     let name = req.body.name;
     let password = req.body.password;
@@ -36,7 +35,7 @@ router.post('/login', async(req, res) => {
             if(!user) response.msj = 'Nombre y/o contraseña y/o ubicación incorrecta, verifique.';
             else{
                 //Si existe, entonces generamos las session:
-                req.session.id = user.id;
+                req.session._id = user._id;
                 req.session.name = user.name;
                 req.session.ubication = user.ubication;
                 req.session.role = user.role;
