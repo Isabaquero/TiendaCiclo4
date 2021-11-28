@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang='<%- lang %>'>
+    <%- include('../template/cabezal', {title: 'Shopping Mall - Consolidacion'}) %>
+<body>
+    <%- include('../template/navbar') %>
+
+    <section class="">
+        <div class="contenedor">
+            <div class="contenedor-titulo">
+                <h2 class="text-center">Sede <span>Bogotá</span></h2>
+                <h3 class="text-center">Total de ventas por ciudad</h3>
+            </div>
+            <!-- <section class="botones__reportes">
+                <div class="listado__clientes">
+                    <button class="boton-reportes">Listado de clientes</button>
+                </div>
+                <div class="ventas__clientes">
+                    <button class="boton-reportes">Ventas por cliente</button>
+                </div>
+            </section> -->
+        </div>
+        <main class="contenedor">
+            <section class="contenedor__tabla__consolidacion">
+                <!-- Inicia Encabezados de tabla -->
+                <div class="tabla__header"><p>Ciudad</p></div>
+                <div class="tabla__header"><p>Valor total ventas</p></div>
+                <!-- Finaliza encabezados de tabla -->
+                <div class="tabla__item"><p>Ejemplo 1</p></div>
+                <div class="tabla__item"><p>Ejemplo 2</p></div>
+                
+
+                <div class="tabla__item"><p>Ejemplo 1</p></div>
+                <div class="tabla__item"><p>Ejemplo 2</p></div>
+                
+
+                
+                
+            </section>
+            <div class="total__venta">
+                <p>Total Ventas Tienda</p>
+                <div class="total__venta__caja">
+                    <i class="fas fa-dollar-sign"></i>
+                </div>
+            </div>
+        </main>
+    </section>
+
+    <%- include('../template/footer') %>
+</body>
+</html>

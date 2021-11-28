@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang='<%- lang %>'>
+    <%- include('../template/cabezal', {title: 'Shopping Mall - Productos'}) %>
+<body class="background-productos">
+    <%- include('../template/navbar') %>
+
+    <main class="principal">
+        <div class="contenedor grid-main">
+            <div class="contenedor-titulo">
+                <h2 class="text-center">Sede <span>Bogotá</span></h2>
+            </div>
+
+            <form action="" class="formulario">
+                <div class="form-control">
+                    <input type="file" id="file_btn" class="btn-subir">
+                </div>
+                <div class="btn-enviar mt-5">
+                    <input type="submit" value="Cargar">
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <%- include('../template/footer') %>
+</body>
+</html>
