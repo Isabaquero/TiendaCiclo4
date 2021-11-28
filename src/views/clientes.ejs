@@ -10,12 +10,12 @@
                 <h2>Sede <span>Bogotá</span></h2>
             </div>
             <div class="contenedor-form">
-                <form action="" class="formulario-clientes">
+                <form action='/clientes/create' class="formulario-clientes" method="post">
                     
                     <div class="grid-cajas">
                         <div class="input-group cedula">
                             <label class="input-fill" for="cedula">
-                                <input type="text" id="cedula">
+                                <input type="text" id="cedula" name="cedula">
                                 <span class="input-label">Cédula:</span>
                                 <i class="fas fa-id-badge"></i>
                             </label>
@@ -23,14 +23,14 @@
     
                         <div class="input-group telefono">
                             <label class="input-fill" for="telefono">
-                                <input type="tel" id="telefono">
+                                <input type="tel" id="telefono" name="telefono">
                                 <span class="input-label">Teléfono:</span>
                                 <i class="fas fa-phone-square-alt"></i>
                             </label>
                         </div>
     
                         <div class="input-group direccion">
-                            <label class="input-fill" for="direccion">
+                            <label class="input-fill" for="direccion" name="direccion">
                                 <input type="text" id="direccion" >
                                 <span class="input-label">Dirección:</span>
                                 <i class="fas fa-street-view"></i>
@@ -39,7 +39,7 @@
     
                         <div class="input-group nombre">
                             <label class="input-fill" for="nombre">
-                                <input class="nombre" type="text" id="nombre">
+                                <input class="nombre" type="text" id="nombre" name="nombre">
                                 <span class="input-label">Nombre:</span>
                                 <i class="fas fa-signature"></i>
                             </label>
@@ -47,11 +47,13 @@
     
                         <div class="input-group correo">
                             <label class="input-fill" for="correo">
-                                <input type="text" id="correo">
+                                <input type="text" id="correo" name="correo">
                                 <span class="input-label">Correo:</span>
                                 <i class="fas fa-at"></i>
                             </label>
                         </div>
+
+                        <input type="submit" value="enviar">
                     </div>
                 </form>
             </div>
@@ -77,6 +79,8 @@
             </div>
         </section>
     </div>
+
+    <script src="js/ajax.js"></script>
     <%- include('../template/footer') %>
 </body>
 </html>
