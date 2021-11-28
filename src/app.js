@@ -30,8 +30,18 @@ app.use(express.static(__dirname + '/public'));
 
 //========================================
 //Manejo de rutas:
-app.get('/', (req,res)=>{ res.render('login', {lang: 'es'}) });
-app.get('/main', (req,res)=>{ res.render('main', {lang: 'es'}) });
+app.get('/', (req,res)=>{
+    //Si ya existe una sessión redireccionelo al main, de lo contrario permitale el acceso:
+    if(req.session && req.session.id) res.redirect('main');
+    else res.render('login', {lang: 'es'});
+});
+
+app.get('/main', (req,res)=>{
+    //Si existen sessiones dejelo ingresar, de lo contrario, redireccione al login:
+    if(req.session && req.session.id) res.render('main', {lang: 'es'});
+    else res.redirect('/');
+});
+
 app.use('/clientes', require('./router/clientes'));
 app.use('/consolidacion', require('./router/consolidacion'));
 app.use('/productos', require('./router/productos'));
