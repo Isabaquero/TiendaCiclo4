@@ -1,0 +1,7 @@
+Librerias instaladas:
+    express
+    nodemon
+    mongoose
+    body-parser
+    ejs
+    
