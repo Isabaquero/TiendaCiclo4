@@ -1,8 +1,9 @@
 Librerias instaladas:
-    express
-    nodemon
-    mongoose
-    body-parser
-    ejs
-    express-session
-    
+    express < framework trabajo más sencillo.
+        nodemon < libreria para guardar cambios en el servidor sin apagar.
+        mongoose < acceder a la base de datos con plantillas ( como una api )
+        body-parser < parsear a json las entradas.
+        ejs < uso de plantillas para la visibilidad de archivos.
+        express-session < uso de sessiones para el logeo.
+        multer < uso de multer para la manipulación de archivos.
+        csvtojson < manejar tipo de archivo csv a json.

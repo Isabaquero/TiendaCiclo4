@@ -64,7 +64,7 @@
 
         function login(data){
             $.ajax({
-                method: 'POST',
+                type: 'POST',
                 url: 'usuarios/login',
                 data,
                 success: function(res){

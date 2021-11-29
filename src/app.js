@@ -1,18 +1,23 @@
 //construcción del servidor con Express.
 const express = require('express');
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000;
 
+//Uso de sesiones:
 const session = require('express-session');
 
-//Conexión a base de datos:
-const moongoose = require('./db');
 
-//Parsear en json entradas: 
+//Conexión a base de datos: NO ELIMINAR, DE ÉL DEPENDE EL ACCESO A LA BASE DE DATOS
+const mongoose = require('./db');
+
+
+//Parsear en json entradas:  a partir de la version 4.16.x de express ya viene como dependencia.
 //const bodyParser = require('body-parser');
-//middlewares
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
+
+
+//Uso de sesiones:
 app.use(session({
     secret: "key123",
     resave: false,
@@ -44,7 +49,7 @@ app.get('/main', (req,res)=>{
 
 app.use('/clientes', require('./router/clientes'));
 app.use('/consolidacion', require('./router/consolidacion'));
-app.use('/productos', require('./router/productos'));
+app.use('/productos', require('./router/productos', {app}));
 app.use('/ventas', require('./router/ventas'));
 app.use('/usuarios', require('./router/usuarios'));
 //app.use('/proveedores', require('./router/proveedores'));
@@ -58,5 +63,5 @@ app.use( (req, res, next)=>{
 });
 
 app.listen(port, ()=>{
-    console.log('Servidor activado');
+    console.log('Servidor activado en el puerto ',port);
 })

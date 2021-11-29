@@ -1,16 +1,16 @@
 const express = require('express');
 const router = express.Router();
+
 //Modelo:
 const User = require('../model/user');
 
-//Si quiero mostrar usuarios:
-/*router.get('/', (req, res) => {
-    res.render('usuarios', {lang: 'es'});
-});*/
-
 
 //Cuando el usuario desee logearse:
+router.get('/login', (req, res)=>{ res.redirect('/') });
 router.post('/login', async(req, res) => {
+    //Validamos que no tenga una sesión abierta:
+    if( typeof req.session._id != 'undefined' ) { res.redirect('main'); }
+
     //Valores traidos:
     let name = req.body.name;
     let password = req.body.password;

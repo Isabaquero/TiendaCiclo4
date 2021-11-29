@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang='<%- lang %>'>
     <%- include('../template/cabezal', {title: 'Shopping Mall - Productos'}) %>
-<body class="background-productos">
+<!-- body class="background-productos"-->
+<body>
     <%- include('../template/navbar') %>
 
     <main class="principal">
@@ -10,9 +11,9 @@
                 <h2 class="text-center">Sede <span>Bogotá</span></h2>
             </div>
 
-            <form action="" class="formulario">
+            <form action="productos" method="post" class="formulario" enctype="multipart/form-data">
                 <div class="form-control">
-                    <input type="file" id="file_btn" class="btn-subir">
+                    <input type="file" id="file_btn" name="file_csv" class="btn-subir">
                 </div>
                 <div class="btn-enviar mt-5">
                     <input type="submit" value="Cargar">
@@ -21,6 +22,16 @@
         </div>
     </main>
 
-    <%- include('../template/footer') %>
+    <% if( typeof success != 'undefined' ){ %>
+        <%- include('../template/scripts') %>
+        <script>
+            let value = ejs.render('<%= success %>') == 1 ? 'success' : 'error';
+            let msj = ejs.render('<%= msj %>');
+
+            toastr[value](msj);
+        </script>
+    <% } %>
+        
+
 </body>
 </html>
