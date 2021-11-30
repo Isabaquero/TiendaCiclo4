@@ -45,14 +45,14 @@
 
             <section class="producto mt-5">
                 <div class="grid__producto">
-                    <div class="grid__header">
+                    
                         <div class="titulo__producto"><p>Código producto</p></div>
                         <div class="titulo__producto"><p>Nombre del producto</p></div>
                         <div class="titulo__producto"><p>Cantidad</p></div>
                         <div class="titulo__producto"><p>Valor total</p></div>
-                    </div>
+                    
                     <!-- CAMPOS -->
-                    <div class="grid__campos">
+                    
                         <div class="input-group">
                             <label class="input-fill" for="cod_producto">
                                 <input type="text" id="cod_producto">
@@ -90,7 +90,57 @@
                                 <input type="submit" value="Agregar producto">
                             </div>
                         </div> <!-- BTN AGREGAR -->
+                    
+                </div><!-- FIN GRID -->
+            </section>
+
+            <!--Esta sección solo es para responsive tamaño moviles hasta 992px-->
+            <section class="producto_responsive mt-5">
+                <div class="grid__producto__mobile">
+                    <div class="grid__header__mobile">
+                        <div class="titulo__producto"><p>Código producto</p></div>
+                        <div class="input-group">
+                            <label class="input-fill" for="cod_producto">
+                                <input type="text" id="cod_producto">
+                                <i class="fas fa-hashtag"></i>
+                            </label>
+                        </div><!-- CAMPO PRODUCTO -->
+
+                        <div class="boton__ventas">
+                            <input type="submit" value="Consultar">
+                        </div> <!-- BOTON -->
+
+                        <div class="titulo__producto"><p>Nombre del producto</p></div>
+                        <div class="input-group nombre_producto">
+                            <label class="input-fill" for="nombre_producto">
+                                <input type="text" id="nombre_producto">
+                                <i class="fas fa-carrot"></i>
+                            </label>  
+                        </div><!-- CAMPO PRODUCTO -->
+
+                        <div class="titulo__producto"><p>Cantidad</p></div>
+                        <div class="input-group">
+                            <label class="input-fill" for="cantidad_producto">
+                                <input type="text" id="cantidad_producto">
+                                <i class="fas fa-plus"></i>
+                            </label>
+                        </div> <!-- CANT PROD  -->
+
+                        <div class="titulo__producto"><p>Valor total</p></div>
+                        <div class="input-group valor_total">
+                            <label class="input-fill" for="valor_total">
+                                <input type="text" id="valor_total">
+                                <i class="fas fa-dollar-sign"></i>
+                            </label>
+                        </div> <!-- CAMPO VALOR TOTAL -->
+
+                        <div class="boton__agregar">
+                            <div class="boton__agregar">
+                                <input type="submit" value="Agregar producto">
+                            </div>
+                        </div> <!-- BTN AGREGAR -->
                     </div>
+                    
                 </div><!-- FIN GRID -->
             </section>
             <!-- CAJAS DE TOTALES -->
