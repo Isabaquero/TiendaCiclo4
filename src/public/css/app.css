@@ -724,6 +724,16 @@ img {
         display: none;
     }
 }
+
+.grid__header__mobile .boton__ventas {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+.grid__header__mobile .boton__agregar {
+    display: flex;
+    justify-content: center;
+}
 /**Fin de la sección Mobile**/
 @media ( max-width: 991px ) {
     .producto {
