@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang='<%- lang %>'>
+<html lang='<%- session.lang %>'>
     <%- include('../template/cabezal', {title: 'Shopping Mall - Productos'}) %>
 <!-- body class="background-productos"-->
 <body>
-    <%- include('../template/navbar') %>
+    <%- include('../template/navbar', {session, option:'Productos'}) %>
 
     <main class="principal">
         <div class="contenedor grid-main">
             <div class="contenedor-titulo">
-                <h2 class="text-center">Sede <span>Bogotá</span></h2>
+                <h2 class="text-center">Cargue productos</h2>
             </div>
 
-            <form action="productos" method="post" class="formulario" enctype="multipart/form-data">
+            <form action="productos" method="post" class="formulario" enctype="multipart/form-data" id='products-form'>
                 <div class="form-control">
                     <input type="file" id="file_btn" name="file_csv" class="btn-subir">
                 </div>
@@ -22,8 +22,9 @@
         </div>
     </main>
 
+    <%- include('../template/scripts') %>
+    
     <% if( typeof success != 'undefined' ){ %>
-        <%- include('../template/scripts') %>
         <script>
             let value = ejs.render('<%= success %>') == 1 ? 'success' : 'error';
             let msj = ejs.render('<%= msj %>');
@@ -32,6 +33,15 @@
         </script>
     <% } %>
         
-
+    <script>
+        $(document).ready( ()=>{
+            $('#products-form').submit( (e)=>{
+                if( !$('#file_btn').val() ){
+                    toastr.warning('Favor, suba un archivo csv antes.');
+                    e.preventDefault();
+                }
+            });
+        });
+    </script>
 </body>
 </html>

@@ -809,10 +809,10 @@ img {
     }
 }
     
-
+.boton__agregar {display:inline-block; margin:auto; padding:0 10px;}
 
 .boton__ventas input[type="submit"],
-.boton__agregar input[type="submit"] {
+.boton__agregar button {
     font-size: 1.6rem;
     padding: 2rem 3.5rem;
     background-color: var(--burgundy);
@@ -822,11 +822,13 @@ img {
     border-radius: 1rem;
     cursor: pointer;
     box-shadow: 0.5rem 0.5rem 1rem black;
-    letter-spacing: .1rem;
     cursor: pointer;
 }
+
+.boton__agregar button{ font-size: 2rem; padding: 1.5rem; margin: auto; display:block;}
+
 .boton__ventas input[type="submit"]:hover,
-.boton__agregar input[type="submit"]:hover {
+.boton__agregar button:hover {
     background-color: #911634;
 }
 .boton_confirmar {

@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang='<%- lang %>'>
+<html lang='<%- session.lang %>'>
     <%- include('../template/cabezal', {title: 'Shopping Mall - Ventas'}) %>
 <body>
     <div class="wavesVentas">
-        <%- include('../template/navbar') %>
+        <%- include('../template/navbar', {session, option:'ventas'}) %>
     
         <section class="">
             <div class="contenedor">
                 <div class="contenedor-titulo">
-                    <h2 class="text-center">Sede <span>Bogotá</span></h2>
+                    <h2 class="text-center">Sede <span><%= session.ubication %></span></h2>
                 </div>
         </section>
 
@@ -22,13 +22,13 @@
                     </label>
                 </div>
                 
-                <div class="boton__consultar">
+                <div class="boton__consultar" id="btn-consult-client">
                     <input type="submit" value="Consultar">
                 </div>
 
                 <div class="input-group">
                     <label class="input-fill" for="cliente">
-                        <input type="text" id="cliente">
+                        <input type="text" id="cliente" disabled>
                         <span class="input-label">Cliente:</span>
                         <i class="fas fa-signature"></i>
                     </label>
@@ -36,147 +36,154 @@
                 
                 <div class="input-group">
                     <label class="input-fill" for="consecutivo">
-                        <input type="text" id="consecutivo">
+                        <input type="text" id="consecutivo" disabled>
                         <span class="input-label">Consecutivo:</span>
                         <i class="fas fa-user-plus"></i>
                     </label>
                 </div>
             </div><!-- FIN DE GRID__CEDULA  -->
 
-            <section class="producto mt-5">
-                <div class="grid__producto">
-                    
-                        <div class="titulo__producto"><p>Código producto</p></div>
-                        <div class="titulo__producto"><p>Nombre del producto</p></div>
-                        <div class="titulo__producto"><p>Cantidad</p></div>
-                        <div class="titulo__producto"><p>Valor total</p></div>
-                    
-                    <!-- CAMPOS -->
-                    
-                        <div class="input-group">
-                            <label class="input-fill" for="cod_producto">
-                                <input type="text" id="cod_producto">
-                                <i class="fas fa-hashtag"></i>
-                            </label>
-                        </div><!-- CAMPO PRODUCTO -->
-
-                        <div class="boton__ventas">
-                            <input type="submit" value="Consultar">
-                        </div> <!-- BOTON -->
-
-                        <div class="input-group nombre_producto">
-                            <label class="input-fill" for="nombre_producto">
-                                <input type="text" id="nombre_producto">
-                                <i class="fas fa-carrot"></i>
-                            </label>  
-                        </div><!-- CAMPO PRODUCTO -->
+                <section class="producto mt-5">
+                    <div class="grid__producto">
                         
-                        <div class="input-group">
-                            <label class="input-fill" for="cantidad_producto">
-                                <input type="text" id="cantidad_producto">
-                                <i class="fas fa-plus"></i>
-                            </label>
-                        </div> <!-- CANT PROD  -->
-
-                        <div class="input-group valor_total">
-                            <label class="input-fill" for="valor_total">
-                                <input type="text" id="valor_total">
-                                <i class="fas fa-dollar-sign"></i>
-                            </label>
-                        </div> <!-- CAMPO VALOR TOTAL -->
-
-                        <div class="boton__agregar">
+                            <div class="titulo__producto"><p>Código producto</p></div>
+                            <div class="titulo__producto"><p>Nombre del producto</p></div>
+                            <div class="titulo__producto"><p>Cantidad</p></div>
+                            <div class="titulo__producto"><p>Valor total</p></div>
+                        
+                        <!-- CAMPOS -->
+                        
+                            <div class="input-group">
+                                <label class="input-fill" for="cod_producto">
+                                    <input type="text" id="cod_producto">
+                                    <i class="fas fa-hashtag"></i>
+                                </label>
+                            </div><!-- CAMPO PRODUCTO -->
+    
+                            <div class="boton__ventas">
+                                <input type="submit" value="Consultar" id="btn-consult-product">
+                            </div> <!-- BOTON -->
+    
+                            <div class="input-group nombre_producto">
+                                <label class="input-fill" for="nombre_producto">
+                                    <input type="text" id="nombre_producto">
+                                    <i class="fas fa-carrot"></i>
+                                </label>  
+                            </div><!-- CAMPO PRODUCTO -->
+                            
+                            <div class="input-group">
+                                <label class="input-fill" for="cantidad_producto">
+                                    <input type="text" id="cantidad_producto">
+                                    <i class="fas fa-plus"></i>
+                                </label>
+                            </div> <!-- CANT PROD  -->
+    
+                            <div class="input-group valor_total">
+                                <label class="input-fill" for="valor_total">
+                                    <input type="text" id="valor_total">
+                                    <i class="fas fa-dollar-sign"></i>
+                                </label>
+                            </div> <!-- CAMPO VALOR TOTAL -->
+    
                             <div class="boton__agregar">
-                                <input type="submit" value="Agregar producto">
-                            </div>
-                        </div> <!-- BTN AGREGAR -->
-                    
-                </div><!-- FIN GRID -->
-            </section>
+                                <div class="boton__agregar">
+                                    <button><i class="fas fa-plus-circle"></i></button>
+                                </div>
+                                <div class="boton__agregar">
+                                    <button><i class="fas fa-trash-alt"></i></button>
+                                </div>
+                            </div> <!-- BTN AGREGAR Y BORRAR-->
 
-            <!--Esta sección solo es para responsive tamaño moviles hasta 992px-->
-            <section class="producto_responsive mt-5">
-                <div class="grid__producto__mobile">
-                    <div class="grid__header__mobile">
-                        <div class="titulo__producto"><p>Código producto</p></div>
-                        <div class="input-group">
-                            <label class="input-fill" for="cod_producto">
-                                <input type="text" id="cod_producto">
-                                <i class="fas fa-hashtag"></i>
-                            </label>
-                        </div><!-- CAMPO PRODUCTO -->
-
-                        <div class="boton__ventas">
-                            <input type="submit" value="Consultar">
-                        </div> <!-- BOTON -->
-
-                        <div class="titulo__producto"><p>Nombre del producto</p></div>
-                        <div class="input-group nombre_producto">
-                            <label class="input-fill" for="nombre_producto">
-                                <input type="text" id="nombre_producto">
-                                <i class="fas fa-carrot"></i>
-                            </label>  
-                        </div><!-- CAMPO PRODUCTO -->
-
-                        <div class="titulo__producto"><p>Cantidad</p></div>
-                        <div class="input-group">
-                            <label class="input-fill" for="cantidad_producto">
-                                <input type="text" id="cantidad_producto">
-                                <i class="fas fa-plus"></i>
-                            </label>
-                        </div> <!-- CANT PROD  -->
-
-                        <div class="titulo__producto"><p>Valor total</p></div>
-                        <div class="input-group valor_total">
-                            <label class="input-fill" for="valor_total">
-                                <input type="text" id="valor_total">
-                                <i class="fas fa-dollar-sign"></i>
-                            </label>
-                        </div> <!-- CAMPO VALOR TOTAL -->
-
-                        <div class="boton__agregar">
+                        
+                    </div><!-- FIN GRID -->
+                </section>
+    
+                <!--Esta sección solo es para responsive tamaño moviles hasta 992px-->
+                <section class="producto_responsive mt-5">
+                    <div class="grid__producto__mobile">
+                        <div class="grid__header__mobile">
+                            <div class="titulo__producto"><p>Código producto</p></div>
+                            <div class="input-group">
+                                <label class="input-fill" for="cod_producto">
+                                    <input type="text" id="cod_producto">
+                                    <i class="fas fa-hashtag"></i>
+                                </label>
+                            </div><!-- CAMPO PRODUCTO -->
+    
+                            <div class="boton__ventas">
+                                <input type="submit" value="Consultar">
+                            </div> <!-- BOTON -->
+    
+                            <div class="titulo__producto"><p>Nombre del producto</p></div>
+                            <div class="input-group nombre_producto">
+                                <label class="input-fill" for="nombre_producto">
+                                    <input type="text" id="nombre_producto">
+                                    <i class="fas fa-carrot"></i>
+                                </label>  
+                            </div><!-- CAMPO PRODUCTO -->
+    
+                            <div class="titulo__producto"><p>Cantidad</p></div>
+                            <div class="input-group">
+                                <label class="input-fill" for="cantidad_producto">
+                                    <input type="text" id="cantidad_producto">
+                                    <i class="fas fa-plus"></i>
+                                </label>
+                            </div> <!-- CANT PROD  -->
+    
+                            <div class="titulo__producto"><p>Valor total</p></div>
+                            <div class="input-group valor_total">
+                                <label class="input-fill" for="valor_total">
+                                    <input type="text" id="valor_total">
+                                    <i class="fas fa-dollar-sign"></i>
+                                </label>
+                            </div> <!-- CAMPO VALOR TOTAL -->
+    
                             <div class="boton__agregar">
-                                <input type="submit" value="Agregar producto">
-                            </div>
-                        </div> <!-- BTN AGREGAR -->
+                                <div class="boton__agregar">
+                                    <input type="submit" value="Agregar producto">
+                                </div>
+                            </div> <!-- BTN AGREGAR -->
+                        </div>
+                        
+                    </div><!-- FIN GRID -->
+                </section>
+                <!-- CAJAS DE TOTALES -->
+                <section class="cajas__totales mt-5">
+                    <div class="total__venta">
+                        <p>Total Venta</p>
+                        <div class="total__venta__caja input-fill">
+                            <input type="text" id="total_venta" readonly>
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        
                     </div>
-                    
-                </div><!-- FIN GRID -->
-            </section>
-            <!-- CAJAS DE TOTALES -->
-            <section class="cajas__totales mt-5">
-                <div class="total__venta">
-                    <p>Total Venta</p>
-                    <div class="total__venta__caja input-fill">
-                        <input type="text" id="total_venta">
-                        <i class="fas fa-dollar-sign"></i>
+                    <div class="total__venta">
+                        <p>Total IVA</p>
+                        <div class="total__venta__caja input-fill">
+                            <input type="text" id="total_iva" readonly>
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
                     </div>
-                    
-                </div>
-                <div class="total__venta">
-                    <p>Total IVA</p>
-                    <div class="total__venta__caja input-fill">
-                        <input type="text" id="total_iva">
-                        <i class="fas fa-dollar-sign"></i>
+                    <div class="total__venta">
+                        <p>Total con IVA</p>
+                        <div class="total__venta__caja input-fill">
+                            <input type="text" id="total_con_iva" readonly>
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
                     </div>
-                </div>
-                <div class="total__venta">
-                    <p>Total con IVA</p>
-                    <div class="total__venta__caja input-fill">
-                        <input type="text" id="total_con_iva">
-                        <i class="fas fa-dollar-sign"></i>
-                    </div>
-                </div>
-            </section>
-
-            <section class="boton_confirmar mt-5">
-                <div class="boton__agregar">
+                </section>
+    
+                <section class="boton_confirmar mt-5">
                     <div class="boton__agregar">
-                        <input type="submit" value="Confirmar">
-                    </div>
-                </div> <!-- BTN AGREGAR -->
-            </section>
+                        <div class="boton__agregar">
+                            <input type="submit" value="Confirmar">
+                        </div>
+                    </div> <!-- BTN AGREGAR -->
+                </section>
         </main>
     </div>
+
+    <%- include('../template/scripts.ejs') %>
+    <script src="js/ventas.js"></script>
 </body>
 </html>

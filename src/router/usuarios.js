@@ -9,7 +9,7 @@ const User = require('../model/user');
 router.get('/login', (req, res)=>{ res.redirect('/') });
 router.post('/login', async(req, res) => {
     //Validamos que no tenga una sesión abierta:
-    if( typeof req.session._id != 'undefined' ) { res.redirect('main'); }
+    if( typeof req.session.info != 'undefined' ) { res.redirect('main'); }
 
     //Valores traidos:
     let name = req.body.name;
@@ -23,24 +23,28 @@ router.post('/login', async(req, res) => {
         value: false
     }
 
-    //Validamos si ubicación no tiene nada, entonces será 'all' y validamos que exista nombre y password
-    if(!ubication) ubication = 'all';
-    if(!name || !password) response.msj = 'Falta completar los campos.';
+    //validamos que exista nombre, password y ubicación
+    if(!name || !password || !ubication) response.msj = 'Falta completar los campos.';
     else{
         try
         {
             //Buscamos dicho usuario:
-            const user = await User.findOne({name: name, password: password, ubication: ubication});
+            const user = await User.findOne({name: name, password: password});
+
             //Si no existe, retornamos la respuesta:
-            if(!user) response.msj = 'Nombre y/o contraseña y/o ubicación incorrecta, verifique.';
+            if(!user) response.msj = 'Nombre y/o contraseña, verifique.';
+            else if( user.ubication != 'all' && user.ubication != ubication ) response.msj = 'Verifique la localidad del usuario.';
             else{
                 //Si existe, entonces generamos las session:
-                req.session._id = user._id;
-                req.session.name = user.name;
-                req.session.ubication = user.ubication;
-                req.session.role = user.role;
+                req.session.info = {
+                    _id : user._id,
+                    name : user.name,
+                    ubication : ubication,
+                    role : user.role,
+                    lang : 'es'
+                };
                 //Valor de éxito, 1:
-                response.title = 'Logeo con éxito.';
+                response.title = 'Logueo con éxito.';
                 response.msj = 'Felicitaciones, en un segundo será redireccionado.';
                 response.success = 1;
             }

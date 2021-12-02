@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang='<%- lang %>'>
+<html lang='<%- session.lang %>'>
     <%- include('../template/cabezal', {title: 'Shopping Mall - Clientes'}) %>
 <body>
     <div class="wavesClientes">
-        <%- include('../template/navbar') %>
+        <%- include('../template/navbar', {session}) %>
     
         <main class="contenedor">
             <div class="sede text-center">
