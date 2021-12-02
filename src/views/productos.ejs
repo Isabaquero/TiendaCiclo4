@@ -5,7 +5,7 @@
 <body>
     <%- include('../template/navbar') %>
 
-    <main class="principal">
+    <main class="">
         <div class="contenedor grid-main">
             <div class="contenedor-titulo">
                 <h2 class="text-center">Sede <span>Bogotá</span></h2>
@@ -21,6 +21,10 @@
             </form>
         </div>
     </main>
+
+    <%- include('../template/footer') %>
+
+
 
     <% if( typeof success != 'undefined' ){ %>
         <%- include('../template/scripts') %>

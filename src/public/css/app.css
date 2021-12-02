@@ -273,8 +273,8 @@ img {
         background-image: url(../img/wavesProductos.svg);
         background-repeat: no-repeat;
         background-position: bottom;
-        /*height: calc(100vh - 20.2%);*/
-        height: calc(100vh - 140px);
+        background-size: cover;
+        height: 100vh;
     }
 }
 @media ( min-width: 800px ) {
