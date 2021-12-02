@@ -43,8 +43,9 @@ app.get('/', (req,res)=>{
 
 app.get('/main', (req,res)=>{
     //Si existen sessiones dejelo ingresar, de lo contrario, redireccione al login:
-    if(req.session && req.session._id) res.render('main', {lang: 'es'});
-    else res.redirect('/');
+    res.render('main', {lang: 'es'});
+    //if(req.session && req.session._id) res.render('main', {lang: 'es'});
+    //else res.redirect('/');
 });
 
 app.use('/clientes', require('./router/clientes'));
@@ -52,6 +53,7 @@ app.use('/consolidacion', require('./router/consolidacion'));
 app.use('/productos', require('./router/productos', {app}));
 app.use('/ventas', require('./router/ventas'));
 app.use('/usuarios', require('./router/usuarios'));
+
 //app.use('/proveedores', require('./router/proveedores'));
 //========================================
 
