@@ -813,8 +813,6 @@ img {
         justify-content: flex-start;
     }
 }
-    
-.boton__agregar {display:inline-block; margin:auto; padding:0 10px;}
 
 .boton__ventas input[type="submit"],
 .boton__agregar button {

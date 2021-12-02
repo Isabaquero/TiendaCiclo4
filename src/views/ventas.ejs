@@ -43,143 +43,117 @@
                 </div>
             </div><!-- FIN DE GRID__CEDULA  -->
 
-                <section class="producto mt-5">
-                    <div class="grid__producto">
-                        
-                            <div class="titulo__producto"><p>Código producto</p></div>
-                            <div class="titulo__producto"><p>Nombre del producto</p></div>
-                            <div class="titulo__producto"><p>Cantidad</p></div>
-                            <div class="titulo__producto"><p>Valor total</p></div>
-                        
-                        <!-- CAMPOS -->
-                        
-                            <div class="input-group">
-                                <label class="input-fill" for="cod_producto">
-                                    <input type="text" id="cod_producto">
-                                    <i class="fas fa-hashtag"></i>
-                                </label>
-                            </div><!-- CAMPO PRODUCTO -->
-    
-                            <div class="boton__ventas">
-                                <input type="submit" value="Consultar" id="btn-consult-product">
-                            </div> <!-- BOTON -->
-    
-                            <div class="input-group nombre_producto">
-                                <label class="input-fill" for="nombre_producto">
-                                    <input type="text" id="nombre_producto">
-                                    <i class="fas fa-carrot"></i>
-                                </label>  
-                            </div><!-- CAMPO PRODUCTO -->
-                            
-                            <div class="input-group">
-                                <label class="input-fill" for="cantidad_producto">
-                                    <input type="text" id="cantidad_producto">
-                                    <i class="fas fa-plus"></i>
-                                </label>
-                            </div> <!-- CANT PROD  -->
-    
-                            <div class="input-group valor_total">
-                                <label class="input-fill" for="valor_total">
-                                    <input type="text" id="valor_total">
-                                    <i class="fas fa-dollar-sign"></i>
-                                </label>
-                            </div> <!-- CAMPO VALOR TOTAL -->
-    
-                            <div class="boton__agregar">
-                                <div class="boton__agregar">
-                                    <button><i class="fas fa-plus-circle"></i></button>
-                                </div>
-                                <div class="boton__agregar">
-                                    <button><i class="fas fa-trash-alt"></i></button>
-                                </div>
-                            </div> <!-- BTN AGREGAR Y BORRAR-->
 
-                        
-                    </div><!-- FIN GRID -->
-                </section>
-    
-                <!--Esta sección solo es para responsive tamaño moviles hasta 992px-->
-                <section class="producto_responsive mt-5">
-                    <div class="grid__producto__mobile">
-                        <div class="grid__header__mobile">
-                            <div class="titulo__producto"><p>Código producto</p></div>
+            <table style="width:100%; margin:70px 0; border-spacing: 0px;">
+                <thead>
+                    <tr>
+                        <th style="background: #e0a500; padding:10px;">#</th>
+                        <th style="background: #e0a500; padding:10px;">Código producto</th>
+                        <th style="background: #e0a500; padding:10px;"></th>
+                        <th style="background: #e0a500; padding:10px;">Nombre del producto</th>
+                        <th style="background: #e0a500; padding:10px;">Cantidad</th>
+                        <th style="background: #e0a500; padding:10px;">Valor total</th>
+                        <th style="background: #e0a500; padding:10px;"></th>
+                        <th style="background: #e0a500; padding:10px;"></th>
+                    </tr>
+                </thead>
+
+                <tbody id="content-products"><!-- aqui se insertarán todos los productos, dicha estructura está creada en div#template.--></tbody>
+                <tbody id="template-products" style="display: none;">
+                    <tr style="margin: 10px 0;">
+                        <th>#</th>
+                        <td>
                             <div class="input-group">
                                 <label class="input-fill" for="cod_producto">
                                     <input type="text" id="cod_producto">
                                     <i class="fas fa-hashtag"></i>
                                 </label>
-                            </div><!-- CAMPO PRODUCTO -->
+                            </div>
+                        </td>
     
+                        <td>
                             <div class="boton__ventas">
-                                <input type="submit" value="Consultar">
-                            </div> <!-- BOTON -->
+                                <div class="boton__agregar">
+                                    <button><i class="fas fa-search"></i></button>
+                                </div>
+                            </div> <!-- BOTON CONSULTAR-->
+                        </td>
     
-                            <div class="titulo__producto"><p>Nombre del producto</p></div>
+                        <td>
                             <div class="input-group nombre_producto">
                                 <label class="input-fill" for="nombre_producto">
                                     <input type="text" id="nombre_producto">
                                     <i class="fas fa-carrot"></i>
                                 </label>  
                             </div><!-- CAMPO PRODUCTO -->
-    
-                            <div class="titulo__producto"><p>Cantidad</p></div>
+                        </td>
+                        
+                        <td>
                             <div class="input-group">
                                 <label class="input-fill" for="cantidad_producto">
                                     <input type="text" id="cantidad_producto">
                                     <i class="fas fa-plus"></i>
                                 </label>
                             </div> <!-- CANT PROD  -->
+                        </td>
     
-                            <div class="titulo__producto"><p>Valor total</p></div>
+                        <td>
                             <div class="input-group valor_total">
                                 <label class="input-fill" for="valor_total">
                                     <input type="text" id="valor_total">
                                     <i class="fas fa-dollar-sign"></i>
                                 </label>
                             </div> <!-- CAMPO VALOR TOTAL -->
+                        </td>
     
+                        <td>
                             <div class="boton__agregar">
-                                <div class="boton__agregar">
-                                    <input type="submit" value="Agregar producto">
-                                </div>
-                            </div> <!-- BTN AGREGAR -->
-                        </div>
-                        
-                    </div><!-- FIN GRID -->
-                </section>
-                <!-- CAJAS DE TOTALES -->
-                <section class="cajas__totales mt-5">
-                    <div class="total__venta">
-                        <p>Total Venta</p>
-                        <div class="total__venta__caja input-fill">
-                            <input type="text" id="total_venta" readonly>
-                            <i class="fas fa-dollar-sign"></i>
-                        </div>
-                        
-                    </div>
-                    <div class="total__venta">
-                        <p>Total IVA</p>
-                        <div class="total__venta__caja input-fill">
-                            <input type="text" id="total_iva" readonly>
-                            <i class="fas fa-dollar-sign"></i>
-                        </div>
-                    </div>
-                    <div class="total__venta">
-                        <p>Total con IVA</p>
-                        <div class="total__venta__caja input-fill">
-                            <input type="text" id="total_con_iva" readonly>
-                            <i class="fas fa-dollar-sign"></i>
-                        </div>
-                    </div>
-                </section>
+                                <button><i class="fas fa-plus-circle"></i></button>
+                            </div>
+                        </td>
     
-                <section class="boton_confirmar mt-5">
+                        <td>
+                            <div class="boton__agregar">
+                                <button><i class="fas fa-trash-alt"></i></button>
+                            </div>
+                        </td>
+                    <tr>
+                    </tbody>
+            </table>
+
+
+            <section class="cajas__totales mt-5">
+                <div class="total__venta">
+                    <p>Total Venta</p>
+                    <div class="total__venta__caja input-fill">
+                        <input type="text" id="total_venta" readonly>
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    
+                </div>
+                <div class="total__venta">
+                    <p>Total IVA</p>
+                    <div class="total__venta__caja input-fill">
+                        <input type="text" id="total_iva" readonly>
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                </div>
+                <div class="total__venta">
+                    <p>Total con IVA</p>
+                    <div class="total__venta__caja input-fill">
+                        <input type="text" id="total_con_iva" readonly>
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                </div>
+            </section>
+
+            <section class="boton_confirmar mt-5">
+                <div class="boton__agregar">
                     <div class="boton__agregar">
-                        <div class="boton__agregar">
-                            <input type="submit" value="Confirmar">
-                        </div>
-                    </div> <!-- BTN AGREGAR -->
-                </section>
+                        <input type="submit" value="Confirmar">
+                    </div>
+                </div> <!-- BTN AGREGAR -->
+            </section>
         </main>
     </div>
 
