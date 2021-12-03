@@ -28,21 +28,20 @@ const upload = multer({storage});
 
 
 router.get('/', (req, res) => {
-    //if( typeof req.session._id == 'undefined' ) res.redirect('/');
-    //else res.render('productos', {lang: 'es'});
-    res.render('productos', {lang: 'es'});
+    if( !req.session.info || req.session.info.role !==0 ) res.redirect('/');
+    else res.render('productos', {session: req.session.info});
 });
 
 //Cargue de archivos:
 router.post('/', upload.single('file_csv'), async(req, res) => {
-    //Validamos que la sesión esté habilitada:
-    //if( typeof req.session._id == 'undefined' ){ res.redirect('/'); return };
+    //Validamos que la sesión esté habilitada y tenga rol de adm:
+    if( req.session.info || req.session.info.role !== 0) exit();
 
     //Lista de tipos de archivos validos:
     const whitelist = ['application/vnd.ms-excel'];
 
     //Template de respuesta:
-    let json = {lang:'es', success:0, msj:'Error desconocido'};
+    let json = {success:0, msj:'Error desconocido'};
 
     //Este archivo no está incluido dentro de los permitidos:
     if( !whitelist.includes(req.file.mimetype) ) json.msj = 'Tipo de extensión no valida.';
@@ -55,7 +54,7 @@ router.post('/', upload.single('file_csv'), async(req, res) => {
         json.msj = 'Cargue éxitoso.';
     }
 
-    res.render('productos', json);
+    res.render('productos', {json, session: req.session.info});
 });
 
 
@@ -70,7 +69,7 @@ router.post('/', upload.single('file_csv'), async(req, res) => {
  */
 function setProducts(data){
     let infoRebotada = [];
-    data.forEach( (json)=>{
+    data.forEach( async (json)=>{
         let msj = '';
         if( 
             typeof json.codigo_producto != 'undefined' &&
@@ -90,11 +89,12 @@ function setProducts(data){
                 'price_sale': json.precio_venta
             }
             try{
-                const product_search = Product.findOne({code: json.code});
-                if( typeof product_search.code == 'undefined') Product.create(json, (err,data)=>{msj=err});
-                else Product.updateOne({_id:json._id}, { $set: {json} });
+                const product_search = await Product.findOne({code: json.code});
+                
+                if( !product_search ) Product.create(json, (err,data)=>{msj=err});
+                else Product.updateOne({_id:product_search._id}, { $set: {json} });
             }
-            catch(e){ msj=e; }
+            catch(e){ msj=e.message; }
         }
         else msj = 'Faltan campos, revise que contenga: codigo_producto, nombre_producto, nitproveedor, precio_compra, ivacompra, precio_venta';
         

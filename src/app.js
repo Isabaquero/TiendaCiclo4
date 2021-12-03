@@ -33,25 +33,29 @@ app.set('views', __dirname + '/views');
 app.use(express.static(__dirname + '/public'));
 
 
-//========================================
+//=======================================
 //Manejo de rutas:
+
 app.get('/', (req,res)=>{
     //Si ya existe una sessión redireccionelo al main, de lo contrario permitale el acceso:
-    if(req.session && req.session._id) res.redirect('main');
+    if( req.session.info ) res.redirect('main');
     else res.render('login', {lang: 'es'});
 });
 
 app.get('/main', (req,res)=>{
     //Si existen sessiones dejelo ingresar, de lo contrario, redireccione al login:
-    if(req.session && req.session._id) res.render('main', {lang: 'es'});
+    if( req.session.info ) res.render('main', {session: req.session.info});
     else res.redirect('/');
 });
 
+app.get('/killSession', (req,res)=>{ delete req.session.info; res.redirect('/'); });
+
 app.use('/clientes', require('./router/clientes'));
 app.use('/consolidacion', require('./router/consolidacion'));
-app.use('/productos', require('./router/productos', {app}));
+app.use('/productos', require('./router/productos'));
 app.use('/ventas', require('./router/ventas'));
 app.use('/usuarios', require('./router/usuarios'));
+
 //app.use('/proveedores', require('./router/proveedores'));
 //========================================
 
