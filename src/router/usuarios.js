@@ -4,12 +4,16 @@ const router = express.Router();
 //Modelo:
 const User = require('../model/user');
 
-
 //Cuando el usuario desee logearse:
-router.get('/login', (req, res)=>{ res.redirect('/') });
+router.get('/login', (req, res)=>{ 
+    //Validamos que no tenga una sesión abierta:
+    if( req.session.info ) res.redirect('main');
+    else res.redirect('/');
+});
+
 router.post('/login', async(req, res) => {
     //Validamos que no tenga una sesión abierta:
-    if( typeof req.session.info != 'undefined' ) { res.redirect('main'); }
+    if( req.session.info ) exit();
 
     //Valores traidos:
     let name = req.body.name;
@@ -37,7 +41,7 @@ router.post('/login', async(req, res) => {
             else{
                 //Si existe, entonces generamos las session:
                 req.session.info = {
-                    _id : user._id,
+                    id : user._id,
                     name : user.name,
                     ubication : ubication,
                     role : user.role,
@@ -54,6 +58,5 @@ router.post('/login', async(req, res) => {
     //Imprimimos respuesta:
     res.json(response);
 });
-
 
 module.exports = router;

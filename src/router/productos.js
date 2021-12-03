@@ -28,14 +28,14 @@ const upload = multer({storage});
 
 
 router.get('/', (req, res) => {
-    if( typeof req.session.info == 'undefined' || req.session.info.role !==0 ) res.redirect('/');
+    if( !req.session.info || req.session.info.role !==0 ) res.redirect('/');
     else res.render('productos', {session: req.session.info});
 });
 
 //Cargue de archivos:
 router.post('/', upload.single('file_csv'), async(req, res) => {
     //Validamos que la sesión esté habilitada y tenga rol de adm:
-    if( typeof req.session.info == 'undefined' || req.session.info.role !== 0){ res.redirect('/'); return };
+    if( req.session.info || req.session.info.role !== 0) exit();
 
     //Lista de tipos de archivos validos:
     const whitelist = ['application/vnd.ms-excel'];

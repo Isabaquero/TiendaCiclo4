@@ -38,13 +38,13 @@ app.use(express.static(__dirname + '/public'));
 
 app.get('/', (req,res)=>{
     //Si ya existe una sessión redireccionelo al main, de lo contrario permitale el acceso:
-    if(req.session && req.session.info) res.redirect('main');
+    if( req.session.info ) res.redirect('main');
     else res.render('login', {lang: 'es'});
 });
 
 app.get('/main', (req,res)=>{
     //Si existen sessiones dejelo ingresar, de lo contrario, redireccione al login:
-    if(req.session && req.session.info) res.render('main', {session: req.session.info});
+    if( req.session.info ) res.render('main', {session: req.session.info});
     else res.redirect('/');
 });
 
