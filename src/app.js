@@ -55,6 +55,9 @@ app.use('/consolidacion', require('./router/consolidacion'));
 app.use('/productos', require('./router/productos'));
 app.use('/ventas', require('./router/ventas'));
 app.use('/usuarios', require('./router/usuarios'));
+app.use('/reportes', require('./router/reportes'));
+app.use('/reportes/clientes', require('./router/reportes'));
+app.use('/reportes/ventas', require('./router/reportes'));
 
 //app.use('/proveedores', require('./router/proveedores'));
 //========================================
