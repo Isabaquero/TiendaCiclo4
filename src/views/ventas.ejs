@@ -16,7 +16,7 @@
             <div class="grid__cedula">
                 <div class="input-group">
                     <label class="input-fill" for="cedula">
-                        <input type="text" id="cedula">
+                        <input type="number" id="cedula" placeholder='000000' min='0'>
                         <span class="input-label">Cédula:</span>
                         <i class="fas fa-id-badge"></i>
                     </label>
@@ -28,7 +28,7 @@
 
                 <div class="input-group">
                     <label class="input-fill" for="cliente">
-                        <input type="text" id="cliente" disabled>
+                        <input type="text" id="cliente" disabled placeholder='Nombre...'>
                         <span class="input-label">Cliente:</span>
                         <i class="fas fa-signature"></i>
                     </label>
@@ -36,7 +36,7 @@
                 
                 <div class="input-group">
                     <label class="input-fill" for="consecutivo">
-                        <input type="text" id="consecutivo" disabled>
+                        <input type="text" id="consecutivo" disabled style="text-align:center">
                         <span class="input-label">Consecutivo:</span>
                         <i class="fas fa-user-plus"></i>
                     </label>
@@ -54,35 +54,32 @@
                         <th style="background: #e0a500; padding:10px;">Cantidad</th>
                         <th style="background: #e0a500; padding:10px;">Valor total</th>
                         <th style="background: #e0a500; padding:10px;"></th>
-                        <th style="background: #e0a500; padding:10px;"></th>
                     </tr>
                 </thead>
 
                 <tbody id="content-products"><!-- aqui se insertarán todos los productos, dicha estructura está creada en div#template.--></tbody>
                 <tbody id="template-products" style="display: none;">
-                    <tr style="margin: 10px 0;">
+                    <tr>
                         <th>#</th>
                         <td>
                             <div class="input-group">
                                 <label class="input-fill">
-                                    <input type="text" typeValue="code_product">
+                                    <input type="number" typeValue="code_product" placeholder='Código...' min='0'>
                                     <i class="fas fa-hashtag"></i>
                                 </label>
                             </div>
                         </td>
     
                         <td>
-                            <div class="boton__ventas">
-                                <div class="boton__agregar">
-                                    <button typeValue="btn_search"><i class="fas fa-search"></i></button>
-                                </div>
+                            <div class="boton__agregar">
+                                <button typeValue="btn_search"><i class="fas fa-search"></i></button>
                             </div> <!-- BOTON CONSULTAR-->
                         </td>
     
                         <td>
                             <div class="input-group nombre_producto">
                                 <label class="input-fill">
-                                    <input type="text" typeValue="name_product">
+                                    <input type="text" typeValue="name_product" placeholder='Nombre...' disabled>
                                     <i class="fas fa-carrot"></i>
                                 </label>  
                             </div><!-- CAMPO PRODUCTO -->
@@ -91,7 +88,7 @@
                         <td>
                             <div class="input-group">
                                 <label class="input-fill">
-                                    <input type="text" typeValue="amount_product">
+                                    <input type="number" typeValue="amount_product" placeholder='000' min='0'>
                                     <i class="fas fa-plus"></i>
                                 </label>
                             </div> <!-- CANT PROD  -->
@@ -100,7 +97,7 @@
                         <td>
                             <div class="input-group valor_total">
                                 <label class="input-fill">
-                                    <input type="text" typeValue="value_product">
+                                    <input type="number" typeValue="value_product" placeholder='000' disabled>
                                     <i class="fas fa-dollar-sign"></i>
                                 </label>
                             </div> <!-- CAMPO VALOR TOTAL -->
@@ -111,14 +108,8 @@
                                 <button typeValue="btn_add"><i class="fas fa-plus-circle"></i></button>
                             </div>
                         </td>
-    
-                        <td>
-                            <div class="boton__agregar">
-                                <button typeValue="btn_delete"><i class="fas fa-trash-alt"></i></button>
-                            </div>
-                        </td>
                     <tr>
-                    </tbody>
+                </tbody>
             </table>
 
 
@@ -126,7 +117,7 @@
                 <div class="total__venta">
                     <p>Total Venta</p>
                     <div class="total__venta__caja input-fill">
-                        <input type="text" id="total_venta" readonly>
+                        <input type="text" id="total_venta" readonly placeholder='000'>
                         <i class="fas fa-dollar-sign"></i>
                     </div>
                     
@@ -134,14 +125,14 @@
                 <div class="total__venta">
                     <p>Total IVA</p>
                     <div class="total__venta__caja input-fill">
-                        <input type="text" id="total_iva" readonly>
+                        <input type="text" id="total_iva" readonly placeholder='000'>
                         <i class="fas fa-dollar-sign"></i>
                     </div>
                 </div>
                 <div class="total__venta">
                     <p>Total con IVA</p>
                     <div class="total__venta__caja input-fill">
-                        <input type="text" id="total_con_iva" readonly>
+                        <input type="text" id="total_con_iva" readonly placeholder='000'>
                         <i class="fas fa-dollar-sign"></i>
                     </div>
                 </div>
