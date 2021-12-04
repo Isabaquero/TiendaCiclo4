@@ -2,30 +2,7 @@
 <html lang='<%- session.lang %>'>
     <%- include('../template/cabezal', {title: 'Shopping Mall - Reporte de Clientes'}) %>
     <body>
-        <header class="contenedor grid-header mb-5">
-            <div class="logo">
-                <h1>Shopping Mall</h1>
-            </div>
-            <nav class="navegacion">
-               
-                
-                    <a class="nav__link " href="Productos.html"><i class="fas fa-boxes"></i>Productos</a>
-               
-               
-                    <a class="nav__link" href="clientes.html"><i class="fas fa-users"></i>Clientes</a>
-               
-              
-                    <a class="nav__link" href="Ventas.html"><i class="fas fa-dollar-sign"></i>Ventas</a>
-              
-                    <a class="nav__link active" href="Reportes.html"><i class="far fa-file-alt"></i>Reportes</a>
-               
-                    <a class="nav__link" href="Consolidacion.html"><i class="fas fa-file-invoice-dollar"></i>Consolidación</a>
-              
-              
-            
-            </nav>
-        </header>
-    
+        <%- include('../template/navbar', {session, option: 'reportesclientes'}) %>           
         <section class="">
             <div class="contenedor">
                 <div class="contenedor-titulo">
@@ -83,8 +60,7 @@
                 </section>
             </main>
         </section>
-        <footer class="footer">
-            <p>Todos los derechos reservados - ShoppingMall 2021</p>
-        </footer>
+        <%- include('../template/footer') %>
+        <%- include('../template/scripts.ejs') %>
     </body>
     </html>
