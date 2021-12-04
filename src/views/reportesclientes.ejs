@@ -27,36 +27,16 @@
                     <div class="tabla__header"><p>Dirección</p></div>
                     <div class="tabla__header"><p>Teléfono</p></div>
                     <!-- Finaliza encabezados de tabla -->
-                    <div class="tabla__item"><p>Ejemplo 1</p></div>
-                    <div class="tabla__item"><p>Ejemplo 2</p></div>
-                    <div class="tabla__item"><p>Ejemplo 3</p></div>
-                    <div class="tabla__item"><p>Ejemplo 4</p></div>
-                    <div class="tabla__item"><p>Ejemplo 5</p></div>
-        
-                    <div class="tabla__item"><p>Ejemplo 1</p></div>
-                    <div class="tabla__item"><p>Ejemplo 2</p></div>
-                    <div class="tabla__item"><p>Ejemplo 3</p></div>
-                    <div class="tabla__item"><p>Ejemplo 4</p></div>
-                    <div class="tabla__item"><p>Ejemplo 5</p></div>
-        
-                    <div class="tabla__item"><p>Ejemplo 1</p></div>
-                    <div class="tabla__item"><p>Ejemplo 2</p></div>
-                    <div class="tabla__item"><p>Ejemplo 3</p></div>
-                    <div class="tabla__item"><p>Ejemplo 4</p></div>
-                    <div class="tabla__item"><p>Ejemplo 5</p></div>
-        
-                    <div class="tabla__item"><p>Ejemplo 1</p></div>
-                    <div class="tabla__item"><p>Ejemplo 2</p></div>
-                    <div class="tabla__item"><p>Ejemplo 3</p></div>
-                    <div class="tabla__item"><p>Ejemplo 4</p></div>
-                    <div class="tabla__item"><p>Ejemplo 5</p></div>
-        
-                    <div class="tabla__item"><p>Ejemplo 1</p></div>
-                    <div class="tabla__item"><p>Ejemplo 2</p></div>
-                    <div class="tabla__item"><p>Ejemplo 3</p></div>
-                    <div class="tabla__item"><p>Ejemplo 4</p></div>
-                    <div class="tabla__item"><p>Ejemplo 5</p></div>
-    
+                    <% if(arrayClients.length >0){ %> <% arrayClients.forEach(client =>{ %> 
+                    
+                    <div class="tabla__item"><p><%= client.id_number %> </p></div>
+                    <div class="tabla__item"><p><%= client.name %></p></div>
+                    <div class="tabla__item"><p><%= client.email %></p></div>
+                    <div class="tabla__item"><p><%= client.address %></p></div>
+                    <div class="tabla__item"><p><%= client.phone %></p></div>
+                        
+                    <% }) %> <% } %>
+
                 </section>
             </main>
         </section>
