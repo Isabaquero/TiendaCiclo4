@@ -52,14 +52,10 @@ app.get('/killSession', (req,res)=>{ delete req.session.info; res.redirect('/');
 
 app.use('/clientes', require('./router/clientes'));
 app.use('/consolidacion', require('./router/consolidacion'));
-app.use('/productos', require('./router/productos'));
+app.use('/productos', require('./router/productos').router);
 app.use('/ventas', require('./router/ventas'));
 app.use('/usuarios', require('./router/usuarios'));
 app.use('/reportes', require('./router/reportes'));
-app.use('/reportesclientes', require('./router/reportesclientes'));
-app.use('/reportesventas', require('./router/reportesventas'));
-
-//app.use('/proveedores', require('./router/proveedores'));
 //========================================
 
 

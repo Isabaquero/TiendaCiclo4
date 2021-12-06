@@ -523,17 +523,19 @@ img {
     justify-content: center;
 }
 
-.boton a {
+.boton button {
     padding: 1rem 5rem;
     background-color: var(--burgundy);
     color: var(--blanco);
+    border:0;
     border-radius: 1rem;
     box-shadow: 0.5rem 0.5rem 1rem black;
 }
 
-.boton a:hover {
+.boton button:hover {
     background-color: #911634;
     color: var(--blanco);
+    cursor:pointer;
 }
 /*****************************
 ********REPORTES LISTADO CLIENTES************/
@@ -834,6 +836,7 @@ img {
 .boton__agregar button:hover {
     background-color: #911634;
 }
+
 .boton_confirmar {
     display: flex;
     justify-content: center;
@@ -851,3 +854,9 @@ img {
     }
     
 }
+
+button[typeValue='btn_add']{ background: #22aaa1; }
+button[typeValue='btn_add']:hover{ background: #1a8881; }
+
+button[typeValue='btn_search']{ background: #e0a500; }
+button[typeValue='btn_search']:hover{ background: #aa7d02; }

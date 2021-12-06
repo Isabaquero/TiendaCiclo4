@@ -32,16 +32,20 @@ router.get('/', (req, res) => {
     else res.render('productos', {session: req.session.info});
 });
 
+
+const getProduct = async function(code, ubication){ return await Product.findOne({code, ubication}) }
+
+
 router.post('/search', async(req, res) => {
-    if( !req.session.info ) res.sendStatus(404);
+    if( !req.session.info ) return res.sendStatus(404);
 
     let json = {success:0, title:'Error en la consulta'};
     
     if( !req.body.id ) json.msj = 'No puede consultarse un producto si no se declara el id.';
     else{
         let code = req.body.id;
-        const product = await Product.findOne({code});
-    
+        const product = await getProduct(code, req.session.info.ubication);
+
         if(product){
             json = {
                 success: 1,
@@ -58,10 +62,11 @@ router.post('/search', async(req, res) => {
     res.json(json);
 });
 
+
 //Cargue de archivos:
 router.post('/', upload.single('file_csv'), async(req, res) => {
     //Validamos que la sesión esté habilitada y tenga rol de adm:
-    if( !req.session.info || req.session.info.role !== 0) res.sendStatus(404);
+    if( !req.session.info || req.session.info.role !== 0) return res.sendStatus(404);
 
     //Lista de tipos de archivos validos:
     const whitelist = ['application/vnd.ms-excel'];
@@ -116,7 +121,7 @@ function setProducts(data){
             try{
                 const product_search = await Product.findOne({code: json.code});
                 
-                if( !product_search ) Product.create(json, (err,data)=>{msj=err});
+                if( !product_search ) Product.create(json, (err,data)=>{ if(err) msj=err; });
                 else Product.updateOne({_id:product_search._id}, { $set: {json} });
             }
             catch(e){ msj=e.message; }
@@ -132,4 +137,7 @@ function setProducts(data){
     return infoRebotada;
 }
 
-module.exports = router;
+module.exports = {
+    router,
+    getProduct
+};

@@ -4,10 +4,17 @@
     </div>
     <nav class="navegacion">
         <%# Sólo el rol de admin (0) podrá acceder y subir productos. %>
-        <% if( session.role === 0 ) { %> <a class="nav__link" href="productos"><i class="fas fa-boxes"></i>Productos</a> <% } %>
-        <a class="nav__link" href="clientes"><i class="fas fa-users"></i>Clientes</a>
+        <% if( session.role === 0 ) { %> 
+            <a class="nav__link" href="productos"><i class="fas fa-boxes"></i>Productos</a>
+            <%# Es necesario que sea rol admin y a la vez su ubicación sea distinta de all para añadir o ver clientes %>
+            <% if( session.ubication != 'all' ) { %>
+                <a class="nav__link" href="clientes"><i class="fas fa-users"></i>Clientes</a>
+            <% } %>
+        <% } %>
         <%# Sólo si especificó una ubicación podrá crear ventas. %>
-        <% if( session.ubication != 'all' ) { %> <a class="nav__link" href="ventas"><i class="fas fa-dollar-sign"></i>Ventas</a> <% } %>
+        <% if( session.ubication != 'all' ) { %>
+             <a class="nav__link" href="ventas"><i class="fas fa-dollar-sign"></i>Ventas</a> 
+        <% } %>
         <a class="nav__link" href="reportes"><i class="far fa-file-alt"></i>Reportes</a>
         <a class="nav__link" href="consolidacion"><i class="fas fa-file-invoice-dollar"></i>Consolidación</a>
         <a class="nav__link" href="killSession"><i class="fas fa-sign-out-alt"></i>Salir</a>

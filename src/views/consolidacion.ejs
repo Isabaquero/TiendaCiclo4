@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang='<%- lang %>'>
+<html lang='<%- session.lang %>'>
     <%- include('../template/cabezal', {title: 'Shopping Mall - Consolidacion'}) %>
 <body>
-    <%- include('../template/navbar') %>
+    <%- include('../template/navbar', {option:'consolidacion', session}) %>
 
     <section class="">
         <div class="contenedor">
             <div class="contenedor-titulo">
-                <h2 class="text-center">Sede <span>Bogotá</span></h2>
+                <h2 class="text-center">Sede <span><%= session.ubication %></span></h2>
                 <h3 class="text-center">Total de ventas por ciudad</h3>
             </div>
             <!-- <section class="botones__reportes">

@@ -13,7 +13,7 @@ router.get('/login', (req, res)=>{
 
 router.post('/login', async(req, res) => {
     //Validamos que no tenga una sesión abierta:
-    if( req.session.info ) exit();
+    if( req.session.info ) return res.sendStatus(404);
 
     //Valores traidos:
     let name = req.body.name;
