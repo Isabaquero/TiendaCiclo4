@@ -29,7 +29,7 @@
                     <% if(arrayReport.length >0){ %> <% arrayReport.forEach(venta =>{ %>
                     <div class="tabla__item"><p><%= venta.id_number %></p></div>
                     <div class="tabla__item"><p><%= venta.name %></p></div>
-                    <div class="tabla__item"><p>$ <%= venta.totalSale %></p></div>
+                    <div class="tabla__item"><p> <i class="fas fa-dollar-sign"></i> <%= venta.totalSale %></p></div>
                     <% }) %> <% } %>
                     
                     
@@ -37,7 +37,8 @@
                 <div class="total__venta">
                     <p>Total Venta</p>
                     <div class="total__venta__caja">
-                        <i class="fas fa-dollar-sign"><%= total.toFixed(2) %> </i>
+                        <i class="fas fa-dollar-sign"></i>
+                        <%= total.toFixed(2) %>
                     </div>
                 </div>
             </main>

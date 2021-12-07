@@ -24,10 +24,10 @@ router.get("/reportesclientes", async (req, res) => {
 
 router.get("/reportesventas", async (req, res) => {
   if( !req.session.info ) return res.redirect('/');
-
+  let ubication = req.session.info.ubication;
   try {
-    const arrayClientBD = await Client.find();
-    const arraySaleBD = await Sale.find();
+    const arrayClientBD = await Client.find({ubication});
+    const arraySaleBD = await Sale.find({ubication});
     let arrayReport =[];
     let total = 0;
 
