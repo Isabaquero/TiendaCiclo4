@@ -2,11 +2,11 @@
 <html lang='<%- session.lang %>'>
     <%- include('../template/cabezal', {title: 'Shopping Mall - Reporte de Clientes'}) %>
     <body>
-        <%- include('../template/navbar', {session, option: 'reportesclientes'}) %>           
+        <%- include('../template/navbar', {session, option: 'reportes'}) %>           
         <section class="">
             <div class="contenedor">
                 <div class="contenedor-titulo">
-                    <h2 class="text-center">Sede <span>Bogotá</span></h2>
+                    <h2 class="text-center">Sede <span> <%= session.ubication %></span></h2>
                     <h3 class="text-center">Listado de clientes</span></h3>
                 </div>
                 <section class="botones__reportes">
