@@ -1,7 +1,6 @@
 <header class="contenedor grid-header mb-5">
     <div class="logo" onclick="window.location.href='main'" style="user-select: none; cursor: pointer">
         <h1>Shopping Mall</h1>
-        <p><%= option %></p>
     </div>
     <nav class="navegacion">
         <%# Sólo el rol de admin (0) podrá acceder y subir productos. %>
@@ -27,7 +26,6 @@
             //Traemos el menú y la opción que es traida del include.
             let menu_options = $('.navegacion a');
             let option = ejs.render('<%= option %>').toUpperCase();
-            console.log(option);
             //Si encuentra dicha opción, se marcará dicho elemento en verde.
             menu_options.each( function(i, val){
                 if( val.text.toUpperCase() == option ) { val.classList.add('active') }
