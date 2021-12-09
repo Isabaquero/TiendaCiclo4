@@ -25,21 +25,17 @@
                 <div class="tabla__header"><p>Ciudad</p></div>
                 <div class="tabla__header"><p>Valor total ventas</p></div>
                 <!-- Finaliza encabezados de tabla -->
-                <div class="tabla__item"><p>Ejemplo 1</p></div>
-                <div class="tabla__item"><p>Ejemplo 2</p></div>
-                
+                <% if(cons.length >0){ %> <% cons.forEach(city =>{%><% if(city.total != 0){ %>  
+                <div class="tabla__item" style="text-transform: capitalize" ><p><%= city.name %></p></div>
+                <div class="tabla__item"><p><%= city.total %></p></div>
+                <% } %> <% }) %> <% } %>
 
-                <div class="tabla__item"><p>Ejemplo 1</p></div>
-                <div class="tabla__item"><p>Ejemplo 2</p></div>
-                
-
-                
-                
             </section>
             <div class="total__venta">
                 <p>Total Ventas Tienda</p>
                 <div class="total__venta__caja">
                     <i class="fas fa-dollar-sign"></i>
+                    <%= totalGeneral.toFixed(2) %> 
                 </div>
             </div>
         </main>

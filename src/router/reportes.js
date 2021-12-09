@@ -45,6 +45,7 @@ router.get("/reportesventas", async (req, res) => {
               let aux = parseFloat(reportF.totalSale)
               aux += parseFloat(sale.valueSale);
               reportF.totalSale = aux
+              reportF.ubication = client.ubication
             }
         }); 
         total += parseFloat(reportF.totalSale)             
