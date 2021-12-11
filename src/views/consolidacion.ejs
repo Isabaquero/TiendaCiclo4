@@ -27,7 +27,7 @@
                 <!-- Finaliza encabezados de tabla -->
                 <% if(cons.length >0){ %> <% cons.forEach(city =>{%><% if(city.total != 0){ %>  
                 <div class="tabla__item" style="text-transform: capitalize" ><p><%= city.name %></p></div>
-                <div class="tabla__item"><p><%= city.total %></p></div>
+                <div class="tabla__item"><p><i class="fas fa-dollar-sign"></i><%= city.total.toFixed(2) %></p></div>
                 <% } %> <% }) %> <% } %>
 
             </section>
